@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const AddCricketData = () => {
   const [format, setFormat] = useState("Test");
@@ -8,7 +9,20 @@ const AddCricketData = () => {
   const [runs, setRuns] = useState(0);
   const [centuries, setCenturies] = useState(0);
 
-  const submitHandler = () => {};
+  const submitHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:4000/admin/add-player", {
+        playerName: playerName,
+        innings: innings,
+        average: average,
+        runs: runs,
+        format: format,
+        centuries: centuries,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   return (
     <form onSubmit={submitHandler}>
       <select value={format} onChange={(e) => setFormat(e.target.value)}>
