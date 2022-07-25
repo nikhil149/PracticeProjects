@@ -1,10 +1,13 @@
-import './App.css';
-import AddCricketData from './components/AddCricketData';
+import "./App.css";
+import AddCricketData from "./components/AddCricketData";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <AddCricketData />
+      <Routes>
+        <Route path="/admin/addPlayer" element={<AddCricketData />} />
+      </Routes>
     </div>
   );
 }
