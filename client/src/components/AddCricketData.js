@@ -20,7 +20,13 @@ const AddCricketData = () => {
         format: format,
         centuries: centuries,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        setPlayerName("");
+        setAverage(0.0);
+        setCenturies(0);
+        setInnings(0);
+        setRuns(0);
+      })
       .catch((err) => console.log(err));
   };
   return (
