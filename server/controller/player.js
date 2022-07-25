@@ -23,3 +23,9 @@ exports.postAddPlayer = (req, res, next) => {
     .catch((err) => res.json({ msg: err.message }));
   // console.log(req.data, req.body);
 };
+
+exports.getPlayer = (req, res, next) => {
+  Player.aggregate([{ $sample: { size: 2 } }])
+    .then((players) => res.json({ players: players }))
+    .catch((err) => res.json({ msg: err.message }));
+};
