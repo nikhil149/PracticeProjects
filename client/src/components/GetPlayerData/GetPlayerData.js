@@ -15,6 +15,19 @@ const GetPlayerData = () => {
         console.log(err.message);
       });
   };
+  const getClickedValue = (e) => {
+    const value = parseFloat(e.target.innerText.split(":")[1].trim());
+    const clickedAttribute = e.target.innerText
+      .split(":")[0]
+      .toLowerCase()
+      .trim();
+    if (value > players[1][clickedAttribute]) {
+      console.log("You Win");
+    } else {
+      console.log("You Lose");
+    }
+    console.log(value, clickedAttribute);
+  };
   return (
     <div>
       <button type="button" onClick={fetchPlayer}>
@@ -25,10 +38,12 @@ const GetPlayerData = () => {
           <div key={player._id}>
             <h1>{player.name}</h1>
             <div>
-              <h1>Innings: {player.innings}</h1>
-              <h2>Average: {player.average}</h2>
-              <span>Runs: {player.runs}</span>
-              <span>Centuries: {player.centuries}</span>
+              <h1 onClick={getClickedValue}>Innings: {player.innings}</h1>
+              <h2 onClick={getClickedValue}>Average: {player.average}</h2>
+              <span onClick={getClickedValue}>Runs: {player.runs}</span>
+              <span onClick={getClickedValue}>
+                Centuries: {player.centuries}
+              </span>
             </div>
           </div>
         ))}
