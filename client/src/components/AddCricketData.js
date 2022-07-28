@@ -1,33 +1,57 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 const AddCricketData = () => {
+  const location = useLocation();
+  const { state } = location;
   const [format, setFormat] = useState("Test");
-  const [playerName, setPlayerName] = useState("");
-  const [innings, setInnings] = useState(0);
-  const [average, setAverage] = useState(0.0);
-  const [runs, setRuns] = useState(0);
-  const [centuries, setCenturies] = useState(0);
+  const [playerName, setPlayerName] = useState(state?.player.name || "");
+  const [innings, setInnings] = useState(state?.player.innings || 0);
+  const [average, setAverage] = useState(state?.player.average || 0.0);
+  const [runs, setRuns] = useState(state?.player.runs || 0);
+  const [centuries, setCenturies] = useState(state?.player.centuries || 0);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/admin/add-player", {
-        playerName: playerName,
-        innings: innings,
-        average: average,
-        runs: runs,
-        format: format,
-        centuries: centuries,
-      })
-      .then((res) => {
-        setPlayerName("");
-        setAverage(0.0);
-        setCenturies(0);
-        setInnings(0);
-        setRuns(0);
-      })
-      .catch((err) => console.log(err));
+    if (state?.player._id) {
+      axios
+        .post("http://localhost:4000/admin/update-player", {
+          id: state?.player._id,
+          playerName: playerName,
+          innings: innings,
+          average: average,
+          runs: runs,
+          format: format,
+          centuries: centuries,
+        })
+        .then((res) => {
+          setPlayerName("");
+          setAverage(0.0);
+          setCenturies(0);
+          setInnings(0);
+          setRuns(0);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post("http://localhost:4000/admin/add-player", {
+          playerName: playerName,
+          innings: innings,
+          average: average,
+          runs: runs,
+          format: format,
+          centuries: centuries,
+        })
+        .then((res) => {
+          setPlayerName("");
+          setAverage(0.0);
+          setCenturies(0);
+          setInnings(0);
+          setRuns(0);
+        })
+        .catch((err) => console.log(err));
+    }
   };
   return (
     <form onSubmit={submitHandler}>

@@ -32,6 +32,28 @@ exports.getPlayer = (req, res, next) => {
 
 exports.getAllPlayers = (req, res, next) => {
   Player.find()
-    .then((result) => res.json({players: result}))
+    .then((result) => res.json({ players: result }))
+    .catch((err) => console.log(err.message));
+};
+
+exports.postUpdatePlayer = (req, res, next) => {
+  const id = req.body.id;
+  const playerName = req.body.playerName;
+  const innings = parseInt(req.body.innings, 10);
+  const average = parseFloat(req.body.average);
+  const runs = parseInt(req.body.runs, 10);
+  const format = req.body.format;
+  const centuries = parseInt(req.body.centuries);
+  Player.findById(id)
+    .then((player) => {
+      player.name = playerName;
+      player.innings = innings;
+      player.average = average;
+      player.runs = runs;
+      player.format = format;
+      player.centuries = centuries;
+      player.save();
+    })
+    .then((result) => res.json({ msg: "Success" }))
     .catch((err) => console.log(err.message));
 };

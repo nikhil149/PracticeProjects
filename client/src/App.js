@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/admin/addPlayer" element={<AddCricketData />} />
+        <Route path="/admin/updatePlayer" element={<AddCricketData />} />
         <Route path="/admin/getPlayer" element={<GetPlayerData />} />
         <Route path="/admin/getAllPlayers" element={<Players />} />
       </Routes>
