@@ -29,3 +29,9 @@ exports.getPlayer = (req, res, next) => {
     .then((players) => res.json({ players: players }))
     .catch((err) => res.json({ msg: err.message }));
 };
+
+exports.getAllPlayers = (req, res, next) => {
+  Player.find()
+    .then((result) => res.json({players: result}))
+    .catch((err) => console.log(err.message));
+};
