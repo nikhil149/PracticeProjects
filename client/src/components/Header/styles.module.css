@@ -1,0 +1,33 @@
+.header {
+    position: sticky;
+    top: 0;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: cadetblue;
+}
+
+.nav_h1 {
+  margin: 0;
+}
+
+.nav__firstDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+}
+
+.nav__secondDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
