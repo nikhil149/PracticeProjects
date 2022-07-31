@@ -7,6 +7,11 @@ exports.postAddPlayer = (req, res, next) => {
   const runs = parseInt(req.body.runs, 10);
   const format = req.body.format;
   const centuries = parseInt(req.body.centuries);
+  const halfCenturies = parseInt(req.body.halfCenturies);
+  const overs = parseInt(req.body.overs);
+  const wickets = parseInt(req.body.wickets);
+  const bowlAverage = parseFloat(req.body.bowlAverage);
+  const catches = parseInt(req.body.catches);
   const player = new Player({
     name: playerName,
     innings: innings,
@@ -14,6 +19,10 @@ exports.postAddPlayer = (req, res, next) => {
     average: average,
     runs: runs,
     centuries: centuries,
+    halfCenturies: halfCenturies,
+    overs: overs,
+    wickets: wickets,
+    catches: catches,
   });
   player
     .save()
@@ -44,6 +53,11 @@ exports.postUpdatePlayer = (req, res, next) => {
   const runs = parseInt(req.body.runs, 10);
   const format = req.body.format;
   const centuries = parseInt(req.body.centuries);
+  const halfCenturies = parseInt(req.body.halfCenturies);
+  const overs = parseInt(req.body.overs);
+  const wickets = parseInt(req.body.wickets);
+  const bowlAverage = parseFloat(req.body.bowlAverage);
+  const catches = parseInt(req.body.catches);
   Player.findById(id)
     .then((player) => {
       player.name = playerName;
@@ -52,6 +66,11 @@ exports.postUpdatePlayer = (req, res, next) => {
       player.runs = runs;
       player.format = format;
       player.centuries = centuries;
+      player.halfCenturies = halfCenturies;
+      player.overs = overs;
+      player.wickets = wickets;
+      player.bowlAverage = bowlAverage;
+      player.catches = catches;
       player.save();
     })
     .then((result) => res.json({ msg: "Success" }))

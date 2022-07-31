@@ -11,6 +11,11 @@ const AddCricketData = () => {
   const [average, setAverage] = useState(state?.player.average || 0.0);
   const [runs, setRuns] = useState(state?.player.runs || 0);
   const [centuries, setCenturies] = useState(state?.player.centuries || 0);
+  const [halfCenturies, setHalfCenturies] = useState(0);
+  const [overs, setOvers] = useState(0);
+  const [wickets, setWickets] = useState(0);
+  const [bowlAverage, setBowlAverage] = useState(0.0);
+  const [catches, setCatches] = useState(0);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -24,6 +29,11 @@ const AddCricketData = () => {
           runs: runs,
           format: format,
           centuries: centuries,
+          halfCenturies: halfCenturies,
+          overs: overs,
+          wickets: wickets,
+          bowlAverage: bowlAverage,
+          catches: catches,
         })
         .then((res) => {
           setPlayerName("");
@@ -31,6 +41,11 @@ const AddCricketData = () => {
           setCenturies(0);
           setInnings(0);
           setRuns(0);
+          setHalfCenturies(0);
+          setOvers(0);
+          setWickets(0);
+          setBowlAverage(0);
+          setCatches(0);
         })
         .catch((err) => console.log(err));
     } else {
@@ -42,6 +57,11 @@ const AddCricketData = () => {
           runs: runs,
           format: format,
           centuries: centuries,
+          halfCenturies: halfCenturies,
+          overs: overs,
+          wickets: wickets,
+          bowlAverage: bowlAverage,
+          catches: catches,
         })
         .then((res) => {
           setPlayerName("");
@@ -49,6 +69,11 @@ const AddCricketData = () => {
           setCenturies(0);
           setInnings(0);
           setRuns(0);
+          setHalfCenturies(0);
+          setOvers(0);
+          setWickets(0);
+          setBowlAverage(0);
+          setCatches(0);
         })
         .catch((err) => console.log(err));
     }
@@ -106,6 +131,52 @@ const AddCricketData = () => {
           onChange={(e) => setRuns(e.target.value)}
         />
       </div>
+      <div>
+        <label htmlFor="50s">Half Centuries</label>
+        <input
+          id="50s"
+          type="number"
+          value={halfCenturies}
+          onChange={(e) => setHalfCenturies(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="over">Overs</label>
+        <input
+          id="over"
+          type="number"
+          value={overs}
+          onChange={(e) => setOvers(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="wickets">Wickets</label>
+        <input
+          id="wickets"
+          type="number"
+          value={wickets}
+          onChange={(e) => setWickets(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="bowlAverage">Bowling Average</label>
+        <input
+          id="bowlAverage"
+          type="number"
+          value={bowlAverage}
+          onChange={(e) => setBowlAverage(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="catch">Catches</label>
+        <input
+          id="catch"
+          type="number"
+          value={catches}
+          onChange={(e) => setCatches(e.target.value)}
+        />
+      </div>
+
       <button type="submit">submit</button>
     </form>
   );

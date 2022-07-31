@@ -27,6 +27,26 @@ const playerSchema = new Schema({
     type: Number,
     required: true,
   },
+  halfCenturies: {
+    type: Number,
+    required: true,
+  },
+  overs: {
+    type: Number,
+    required: true,
+  },
+  wickets: {
+    type: Number,
+    required: true,
+  },
+  bowlAverage: {
+    type: Number,
+    required: true,
+  },
+  catches: {
+    type: Number,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Player", playerSchema);
